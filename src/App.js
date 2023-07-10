@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Login from "./login/views/login";
@@ -16,11 +16,25 @@ import { FullEditMember } from "./login/views/fullEditMember";
 import { FullWriteList } from "./login/views/fullWriteList";
 import { GithubLogin } from "./login/views/githubLogin";
 import Test2 from "./Test2";
+import Home from "./screens/Home";
+import { List } from "react-bootstrap-icons";
+import SelectedMyPage from "./screens/SelectedMyPage";
+import FAQ from "./screens/FAQ";
+import HomeModal from "./components/Home/HomeModal";
 
 function App() {
+  const searchNameRef = useRef();
+  const onChangeSearchName = (e) => {
+    searchNameRef.current = e.target.value;
+    // console.log(searchNameRef.current);
+  };
+
   return (
     <div>
-      <Menu />
+      <Menu
+        searchNameRef={searchNameRef}
+        onChangeSearchName={onChangeSearchName}
+      />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
@@ -34,6 +48,15 @@ function App() {
         <Route path="/githubLogin" element={<GithubLogin />} />
         <Route path="/test" element={<Test />} />
         <Route path="/test2" element={<Test2 />} />
+
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/list" element={<List />}></Route>
+        <Route
+          path="/mypage/selectedmypage"
+          element={<SelectedMyPage />}
+        ></Route>
+        <Route path="/customer/faq" element={<FAQ />}></Route>
+        <Route path="/modal" element={<HomeModal />}></Route>
       </Routes>
     </div>
   );

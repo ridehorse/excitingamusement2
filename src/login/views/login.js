@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { call, login } from "../service/ApiService";
+import React, { useState } from "react";
+import { login, socialLogin } from "../service/ApiService";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ErrorMessage } from "../service/Messaging";
 import { kakaoAuth } from "../service/kakaoLogin";
 
@@ -26,7 +26,7 @@ const Login = () => {
     long_login = false;
   } else if (local === "true") {
     long_login = true;
-    member_id = sessionStorage.getItem("MEMBER_ID");
+    member_id = localStorage.getItem("MEMBER_ID");
   }
 
   const [longLogin, setLongLogin] = useState(long_login);
@@ -61,6 +61,11 @@ const Login = () => {
   const handleClickKakao = () => {
     // 인가키 받아오기
     kakaoAuth();
+  };
+
+  // 깃허브버튼 클릭
+  const handleClickGithub = (provider) => {
+    socialLogin(provider);
   };
 
   function handleInputChange(e) {
@@ -159,6 +164,7 @@ const Login = () => {
                 회원가입
               </Link>
             </Col>
+
             <Col
               className="px-0 text-center"
               sm={3}
@@ -183,9 +189,26 @@ const Login = () => {
             <img
               className="mt-4"
               src={require("../img/kakao.png")}
-              style={{ width: "70px", height: "50px", margintop: "0px" }}
+              style={{
+                width: "70px",
+                height: "50px",
+                margintop: "0px",
+                cursor: "pointer",
+              }}
               alt="카카오아이콘"
               onClick={handleClickKakao}
+            />
+            <img
+              className="mt-4"
+              src={require("../img/github_icon.png")}
+              style={{
+                width: "70px",
+                height: "50px",
+                margintop: "0px",
+                cursor: "pointer",
+              }}
+              alt="github아이콘"
+              onClick={() => handleClickGithub("github")}
             />
           </Row>
           <Row>

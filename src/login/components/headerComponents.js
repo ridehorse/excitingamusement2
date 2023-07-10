@@ -1,4 +1,4 @@
-import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
+import { Col, Container, Nav, NavDropdown, Row } from "react-bootstrap";
 import { PersonCircle } from "react-bootstrap-icons";
 import { useEffect, useRef, useState } from "react";
 
@@ -98,123 +98,126 @@ export function Profile({ member_id, kakao_id, m_image, kakao_name }) {
   }
 
   return (
-    <NavDropdown
-      style={{ width: "15%" }}
-      title={
-        <span>
-          {m_image ? (
-            <img
-              src={require("../img/profileImg/" + m_image)}
-              style={{ width: "30px", height: "30px" }}
-              className="border rounded-circle"
-              alt="img"
-            />
-          ) : kakao_image ? (
-            <img
-              src={kakao_image}
-              style={{ width: "30px", height: "30px" }}
-              className="border rounded-circle"
-              alt="img"
-            />
-          ) : (
-            <span style={{ width: "30px", height: "30px" }}>
-              <PersonCircle style={{ width: "30px", height: "30px" }} />
+    <Container style={{ width: "15%", padding: "0px", margin: "0px" }}>
+      <NavDropdown
+        title={
+          <span>
+            {m_image ? (
+              <img
+                src={require("../img/profileImg/" + m_image)}
+                style={{ width: "30px", height: "30px" }}
+                className="border rounded-circle"
+                alt="img"
+              />
+            ) : kakao_image ? (
+              <img
+                src={kakao_image}
+                style={{ width: "30px", height: "30px" }}
+                className="border rounded-circle"
+                alt="img"
+              />
+            ) : (
+              <span style={{ width: "30px", height: "30px" }}>
+                <PersonCircle style={{ width: "30px", height: "30px" }} />
+              </span>
+            )}
+            <span style={{ marginLeft: "4px", fontSize: "14px" }}>
+              {kakao_name || member_id || ""}
             </span>
-          )}
-          <span style={{ marginLeft: "4px", fontSize: "14px" }}>
-            {kakao_name || member_id || ""}
           </span>
-        </span>
-      }
-      id="nav-dropdown"
-    >
-      <div
-        eventkey="4.1"
-        style={{
-          fontSize: "14px",
-          paddingTop: "0px",
-          paddingBottom: "0px",
-          paddingLeft: "11px",
-          paddingRight: "11px",
-        }}
+        }
+        id="nav-dropdown"
       >
-        <span style={{ fontWeight: "bold" }}>
-          {kakao_name || member_id || "방문객"}
-        </span>
-        님 환영합니다!
-      </div>
-      <NavDropdown.Divider />
-
-      {login ? (
-        <div>
-          <NavDropdown.Item
-            eventKey="4.1"
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              paddingTop: "0px",
-              paddingBottom: "7px",
-            }}
-            onClick={handleClickProfile}
-            id="wishList"
-          >
-            위시리스트
-          </NavDropdown.Item>
-
-          <NavDropdown.Item
-            eventKey="4.2"
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              paddingTop: "0px",
-              paddingBottom: "7px",
-            }}
-            onClick={handleClickProfile}
-            id="buyList"
-          >
-            구매내역
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            eventKey="4.2"
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              paddingTop: "0px",
-              paddingBottom: "7px",
-            }}
-            onClick={handleClickProfile}
-            id="writeList"
-          >
-            댓글리스트
-          </NavDropdown.Item>
-          <NavDropdown.Item
-            eventKey="4.2"
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              paddingTop: "0px",
-              paddingBottom: "0px",
-            }}
-            onClick={handleClickProfile}
-            id="editMember"
-          >
-            정보수정
-          </NavDropdown.Item>
-        </div>
-      ) : (
-        <NavDropdown.Item
-          onClick={handleClickSignup}
-          style={{ cursor: "default" }}
+        <div
+          eventkey="4.1"
+          style={{
+            fontSize: "14px",
+            paddingTop: "0px",
+            paddingBottom: "0px",
+            paddingLeft: "11px",
+            paddingRight: "11px",
+          }}
         >
-          <Col style={{ fontSize: "13px" }}>
-            <span style={{ fontWeight: "bold", color: "blue" }}>회원가입</span>
-            을 하시면 AXCITINGAMUSEMENT의
-          </Col>
-          <Col style={{ fontSize: "13px" }}>
-            다양한 컨텐츠를 이용하실 수 있습니다.
-          </Col>
-        </NavDropdown.Item>
-      )}
-    </NavDropdown>
+          <span style={{ fontWeight: "bold" }}>
+            {kakao_name || member_id || "방문객"}
+          </span>
+          님 환영합니다!
+        </div>
+        <NavDropdown.Divider />
+
+        {login ? (
+          <div>
+            <NavDropdown.Item
+              eventKey="4.1"
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                paddingTop: "0px",
+                paddingBottom: "7px",
+              }}
+              onClick={handleClickProfile}
+              id="wishList"
+            >
+              위시리스트
+            </NavDropdown.Item>
+
+            <NavDropdown.Item
+              eventKey="4.1"
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                paddingTop: "0px",
+                paddingBottom: "7px",
+              }}
+              onClick={handleClickProfile}
+              id="buyList"
+            >
+              구매내역
+            </NavDropdown.Item>
+            <NavDropdown.Item
+              eventKey="4.1"
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                paddingTop: "0px",
+                paddingBottom: "7px",
+              }}
+              onClick={handleClickProfile}
+              id="writeList"
+            >
+              댓글리스트
+            </NavDropdown.Item>
+            <NavDropdown.Item
+              eventKey="4.1"
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                paddingTop: "0px",
+                paddingBottom: "0px",
+              }}
+              onClick={handleClickProfile}
+              id="editMember"
+            >
+              정보수정
+            </NavDropdown.Item>
+          </div>
+        ) : (
+          <NavDropdown.Item
+            onClick={handleClickSignup}
+            style={{ cursor: "default" }}
+          >
+            <Col style={{ fontSize: "13px" }}>
+              <span style={{ fontWeight: "bold", color: "blue" }}>
+                회원가입
+              </span>
+              을 하시면 AXCITINGAMUSEMENT의
+            </Col>
+            <Col style={{ fontSize: "13px" }}>
+              다양한 컨텐츠를 이용하실 수 있습니다.
+            </Col>
+          </NavDropdown.Item>
+        )}
+      </NavDropdown>
+    </Container>
   );
 }

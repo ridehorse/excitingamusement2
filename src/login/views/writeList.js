@@ -14,6 +14,8 @@ const WriteList = (props) => {
   const [pageMaker, setPageMaker] = useState([]);
   const [total, setTotal] = useState([]);
 
+  const kakao_name = sessionStorage.getItem("KAKAO_NAME");
+
   // writeList/12 에서 12를 받아온다.
   const { id } = useParams();
 
@@ -77,7 +79,7 @@ const WriteList = (props) => {
             </Row>
             <Row className="mb-2 mx-1">
               <div style={{ fontSize: "14px" }}>
-                {pageMaker.cri?.member_id}
+                {kakao_name ? kakao_name : pageMaker.cri?.member_id}
                 님의 게시글 모음
               </div>
             </Row>

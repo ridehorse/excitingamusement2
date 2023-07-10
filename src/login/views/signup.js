@@ -302,29 +302,38 @@ const SignUp = () => {
             {/* kakaoid 존재여부 저장 */}
             <input type="hidden" id="hidden" name="hidden" value={kakaoId} />
             {/* 아이디 */}
-            <div className="mb-4">
-              <Row className="mb-2">
-                <div className="signup-text">아이디</div>
-              </Row>
-              <Row className="px-2">
-                <div className="signup-input">
-                  <input
-                    id="member_id"
-                    type="text"
-                    name="member_id"
-                    className="border-0"
-                    style={{ outline: "none", width: "100%" }}
-                    onBlur={handleBlur}
-                  ></input>
-                </div>
-              </Row>
-              {errorName === "member_id" ? (
-                <ErrorMessage errorMessage={errorMessage} />
-              ) : null}
-              {errorName === "member_id" ? (
-                <CorrectMessage correctMessage={correctMessage} />
-              ) : null}
-            </div>
+            {kakaoId === "false" ? (
+              <div className="mb-4">
+                <Row className="mb-2">
+                  <div className="signup-text">아이디</div>
+                </Row>
+                <Row className="px-2">
+                  <div className="signup-input">
+                    <input
+                      id="member_id"
+                      type="text"
+                      name="member_id"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      onBlur={handleBlur}
+                    ></input>
+                  </div>
+                </Row>
+                {errorName === "member_id" ? (
+                  <ErrorMessage errorMessage={errorMessage} />
+                ) : null}
+                {errorName === "member_id" ? (
+                  <CorrectMessage correctMessage={correctMessage} />
+                ) : null}
+              </div>
+            ) : (
+              <input
+                type="hidden"
+                id="member_id"
+                name="member_id"
+                value={`kk_${kakaoId}`}
+              />
+            )}
 
             {/* 비밀번호 */}
             <div className="mb-4">

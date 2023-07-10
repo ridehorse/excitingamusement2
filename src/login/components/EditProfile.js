@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { PersonCircle } from "react-bootstrap-icons";
@@ -13,6 +13,8 @@ export function EditProfile() {
   const [m_email, setM_email] = useState("");
   // 카카오로그인 확인
   const [kakao, setKakao] = useState("");
+
+  const kakao_name = sessionStorage.getItem("KAKAO_NAME");
 
   // member정보 받아옴 (상태변수로 다른 컴포넌트에서 받아오면 너무 여러곳에서 쓰여서 꼬임)
   useEffect(() => {
@@ -284,7 +286,7 @@ export function EditProfile() {
               borderColor: "lightgray",
             }}
           >
-            <div>{m_name}</div>
+            <div>{kakao_name ? kakao_name : m_name}</div>
           </Col>
         </Row>
         <Row style={{ borderBottom: "1px solid", borderColor: "lightgray" }}>

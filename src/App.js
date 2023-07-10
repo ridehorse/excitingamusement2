@@ -14,6 +14,8 @@ import { Test } from "./login/views/test";
 import { KakaoInter } from "./login/views/kakaoInter";
 import { FullEditMember } from "./login/views/fullEditMember";
 import { FullWriteList } from "./login/views/fullWriteList";
+import { GithubLogin } from "./login/views/githubLogin";
+import Test2 from "./Test2";
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
         <Route path="/editMember" element={<FullEditMember />} />
         <Route path="/kakaoLogin" element={<KakaoLogin />} />
         <Route path="/kakaoInter" element={<KakaoInter />} />
+        <Route path="/githubLogin" element={<GithubLogin />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/test2" element={<Test2 />} />
       </Routes>
     </div>
   );

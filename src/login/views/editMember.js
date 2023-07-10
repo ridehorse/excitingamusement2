@@ -15,6 +15,7 @@ const EditMember = () => {
   const [m_image, setM_image] = useState("");
 
   const member_id = sessionStorage.getItem("MEMBER_ID");
+  const kakao_name = sessionStorage.getItem("KAKAO_NAME");
 
   const request = {
     member_id: member_id,

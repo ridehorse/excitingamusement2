@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 const MyNavbar = () => {
   const member_id = sessionStorage.getItem("MEMBER_ID"); // 세션에서 가져올 사용자 이름. 실제로는 서버에서 가져온 데이터로 구현해야 함
   const kakao_name = sessionStorage.getItem("KAKAO_NAME");
+  const git_id = sessionStorage.getItem("GIT_ID");
 
   function handleClickLogout() {
     const confirmLogout = window.confirm("로그아웃 하시겠습니까?");
@@ -22,6 +23,7 @@ const MyNavbar = () => {
       sessionStorage.removeItem("KAKAO_IMAGE");
       sessionStorage.removeItem("KAKAO_NAME");
       localStorage.removeItem("ACCESS_TOKEN");
+      sessionStorage.removeItem("ADMIN");
       window.location.href = "/login";
     } else {
       return;
@@ -40,7 +42,7 @@ const MyNavbar = () => {
             &nbsp;
           </i>
           <span style={{ fontWeight: "bold" }}>
-            {kakao_name ? kakao_name : member_id}
+            {kakao_name || git_id || member_id}
           </span>
           님 환영합니다
         </div>

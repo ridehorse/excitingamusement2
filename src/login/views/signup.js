@@ -14,7 +14,9 @@ const SignUp = () => {
   const formRef = useRef(null);
 
   // kakao_id값 hidden 에 저장(kakao_id가 없으면 false로 저장)
+  // git_id값 hidden 에 저장(git_id가 없으면 false로 저장)
   const [kakaoId, setKakaoId] = useState("false");
+  const [gitId, setGitId] = useState("false");
 
   useEffect(() => {
     if (sessionStorage.getItem("KAKAO_ID") !== null) {
@@ -22,9 +24,21 @@ const SignUp = () => {
 
       console.log("signUp/kakao_id : " + kakaoId);
     }
+
+    if (sessionStorage.getItem("GIT_ID") !== null) {
+      setGitId(sessionStorage.getItem("GIT_ID"));
+
+      console.log("signUp/git_id : " + gitId);
+    }
+
     const currentParams = new URLSearchParams(window.location.search);
     if (currentParams.get("kakaoId")) {
       setKakaoId(currentParams.get("kakaoId"));
+    }
+
+    const currentParams2 = new URLSearchParams(window.location.search);
+    if (currentParams2.get("gid_id")) {
+      setGitId(currentParams2.get("gid_id"));
     }
   }, []);
 
@@ -47,6 +61,21 @@ const SignUp = () => {
   const [formValue, setFormValue] = useState("");
   const [enableSubmit, setEnableSubmit] = useState("");
   const [passValue, setPassValue] = useState("");
+
+  // 카카오,git 로그인시 랜덤 비밀번호 생성
+  const [randomPass, setRandomPass] = useState("");
+  useEffect(() => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    let result = "";
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    setRandomPass(result);
+  }, []);
+  // 랜덤 비밀번호 끝
 
   function handleBlur(e) {
     const { name, value } = e.target;
@@ -162,6 +191,8 @@ const SignUp = () => {
     // kakaoID 로그
     const kakao_id = formRef.current.querySelector("#hidden").value;
     console.log(kakao_id);
+    const git_id = formRef.current.querySelector("#hidden2").value;
+    console.log(git_id);
     const member_id = formRef.current.querySelector("#member_id").value;
 
     const m_pass = formRef.current.querySelector("#m_pass").value;
@@ -260,6 +291,7 @@ const SignUp = () => {
       m_address: m_address,
       m_gender: m_gender,
       m_kakao_id: kakao_id,
+      m_github_id: git_id,
     };
 
     console.log(param);
@@ -284,14 +316,27 @@ const SignUp = () => {
             />
           </Row>
           {kakaoId === "false" ? (
-            ""
+            gitId === "false" ? (
+              ""
+            ) : (
+              <Row
+                className="p-4 mx-2 border-1 border border-success text-center"
+                style={{ marginTop: "20px", marginBottom: "30px" }}
+              >
+                <div style={{ fontWeight: "bold" }}>
+                  첫 1회 로그인시에는 EXCITINGAMUSEMENT의 컨텐츠를 이용하기 위한
+                  정보입력이 필요합니다.
+                </div>
+              </Row>
+            )
           ) : (
             <Row
               className="p-4 mx-2 border-1 border border-success text-center"
               style={{ marginTop: "20px", marginBottom: "30px" }}
             >
               <div style={{ fontWeight: "bold" }}>
-                첫 1회 로그인시에는 회원가입이 필요합니다.
+                첫 1회 로그인시에는 EXCITINGAMUSEMENT의 컨텐츠를 이용하기 위한
+                정보입력이 필요합니다.
               </div>
             </Row>
           )}
@@ -301,31 +346,42 @@ const SignUp = () => {
           <form ref={formRef}>
             {/* kakaoid 존재여부 저장 */}
             <input type="hidden" id="hidden" name="hidden" value={kakaoId} />
+            {/* gitid 존재여부 저장 */}
+            <input type="hidden" id="hidden2" name="hidden2" value={gitId} />
             {/* 아이디 */}
             {kakaoId === "false" ? (
-              <div className="mb-4">
-                <Row className="mb-2">
-                  <div className="signup-text">아이디</div>
-                </Row>
-                <Row className="px-2">
-                  <div className="signup-input">
-                    <input
-                      id="member_id"
-                      type="text"
-                      name="member_id"
-                      className="border-0"
-                      style={{ outline: "none", width: "100%" }}
-                      onBlur={handleBlur}
-                    ></input>
-                  </div>
-                </Row>
-                {errorName === "member_id" ? (
-                  <ErrorMessage errorMessage={errorMessage} />
-                ) : null}
-                {errorName === "member_id" ? (
-                  <CorrectMessage correctMessage={correctMessage} />
-                ) : null}
-              </div>
+              gitId === "false" ? (
+                <div className="mb-4">
+                  <Row className="mb-2">
+                    <div className="signup-text">아이디</div>
+                  </Row>
+                  <Row className="px-2">
+                    <div className="signup-input">
+                      <input
+                        id="member_id"
+                        type="text"
+                        name="member_id"
+                        className="border-0"
+                        style={{ outline: "none", width: "100%" }}
+                        onBlur={handleBlur}
+                      ></input>
+                    </div>
+                  </Row>
+                  {errorName === "member_id" ? (
+                    <ErrorMessage errorMessage={errorMessage} />
+                  ) : null}
+                  {errorName === "member_id" ? (
+                    <CorrectMessage correctMessage={correctMessage} />
+                  ) : null}
+                </div>
+              ) : (
+                <input
+                  type="hidden"
+                  id="member_id"
+                  name="member_id"
+                  value={`gg_${gitId}`}
+                />
+              )
             ) : (
               <input
                 type="hidden"
@@ -336,54 +392,90 @@ const SignUp = () => {
             )}
 
             {/* 비밀번호 */}
-            <div className="mb-4">
-              <Row className="mb-2">
-                <div className="signup-text">비밀번호</div>
-              </Row>
-              <Row className="px-2">
-                <div className="signup-input">
-                  <input
-                    id="m_pass"
-                    type="password"
-                    name="m_pass"
-                    className="border-0"
-                    style={{ outline: "none", width: "100%" }}
-                    onBlur={handleBlur}
-                  ></input>
+            {kakaoId === "false" ? (
+              gitId === "false" ? (
+                <div className="mb-4">
+                  <Row className="mb-2">
+                    <div className="signup-text">비밀번호</div>
+                  </Row>
+                  <Row className="px-2">
+                    <div className="signup-input">
+                      <input
+                        id="m_pass"
+                        type="password"
+                        name="m_pass"
+                        className="border-0"
+                        style={{ outline: "none", width: "100%" }}
+                        onBlur={handleBlur}
+                      ></input>
+                    </div>
+                  </Row>
+                  {errorName === "m_pass" ? (
+                    <ErrorMessage errorMessage={errorMessage} />
+                  ) : null}
+                  {errorName === "m_pass" ? (
+                    <CorrectMessage correctMessage={correctMessage} />
+                  ) : null}{" "}
                 </div>
-              </Row>
-              {errorName === "m_pass" ? (
-                <ErrorMessage errorMessage={errorMessage} />
-              ) : null}
-              {errorName === "m_pass" ? (
-                <CorrectMessage correctMessage={correctMessage} />
-              ) : null}{" "}
-            </div>
+              ) : (
+                <input
+                  type="hidden"
+                  id="m_pass"
+                  name="m_pass"
+                  value={randomPass}
+                />
+              )
+            ) : (
+              <input
+                type="hidden"
+                id="m_pass"
+                name="m_pass"
+                value={randomPass}
+              />
+            )}
 
             {/* 비밀번호 확인 */}
-            <div className="mb-4">
-              <Row className="mb-2">
-                <div className="signup-text">비밀번호 확인</div>
-              </Row>
-              <Row className="px-2">
-                <div className="signup-input">
-                  <input
-                    id="m_pass2"
-                    type="password"
-                    name="m_pass2"
-                    className="border-0"
-                    style={{ outline: "none", width: "100%" }}
-                    onBlur={handleBlur}
-                  ></input>
+            {kakaoId === "false" ? (
+              gitId === "false" ? (
+                <div className="mb-4">
+                  <Row className="mb-2">
+                    <div className="signup-text">비밀번호 확인</div>
+                  </Row>
+                  <Row className="px-2">
+                    <div className="signup-input">
+                      <input
+                        id="m_pass2"
+                        type="password"
+                        name="m_pass2"
+                        className="border-0"
+                        style={{ outline: "none", width: "100%" }}
+                        onBlur={handleBlur}
+                      ></input>
+                    </div>
+                  </Row>
+                  {errorName === "m_pass2" ? (
+                    <ErrorMessage errorMessage={errorMessage} />
+                  ) : null}
+                  {errorName === "m_pass2" ? (
+                    <CorrectMessage correctMessage={correctMessage} />
+                  ) : null}{" "}
                 </div>
-              </Row>
-              {errorName === "m_pass2" ? (
-                <ErrorMessage errorMessage={errorMessage} />
-              ) : null}
-              {errorName === "m_pass2" ? (
-                <CorrectMessage correctMessage={correctMessage} />
-              ) : null}{" "}
-            </div>
+              ) : (
+                <input
+                  type="hidden"
+                  id="m_pass2"
+                  name="m_pass2"
+                  value={randomPass}
+                />
+              )
+            ) : (
+              <input
+                type="hidden"
+                id="m_pass2"
+                name="m_pass2"
+                value={randomPass}
+              />
+            )}
 
             {/* 이름 */}
             <div className="mb-4">

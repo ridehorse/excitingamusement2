@@ -32,6 +32,7 @@ export function HeaderLogout({ setM_image, setMember_id, setKakao_id }) {
       sessionStorage.removeItem("KAKAO_ID");
       sessionStorage.removeItem("KAKAO_IMAGE");
       sessionStorage.removeItem("KAKAO_NAME");
+      sessionStorage.removeItem("ADMIN");
       localStorage.removeItem("ACCESS_TOKEN");
       setM_image("");
       setMember_id("");
@@ -58,7 +59,7 @@ export function HeaderLogout({ setM_image, setMember_id, setKakao_id }) {
 }
 
 // member_id === null : 비로그인, member_id !== null : 로그인
-export function Profile({ member_id, kakao_id, m_image, kakao_name }) {
+export function Profile({ member_id, kakao_id, m_image, kakao_name, git_id }) {
   //로그인(true) 비로그인(false) 구분
   const [login, setLogin] = useState(true);
 
@@ -71,6 +72,7 @@ export function Profile({ member_id, kakao_id, m_image, kakao_name }) {
   console.log("profile//member_id : " + member_id);
   console.log("profile//kakao_id : " + kakao_id);
   console.log("profile//m_image : " + m_image);
+  console.log("profile//git_id : " + git_id);
   const kakao_image = sessionStorage.getItem("KAKAO_IMAGE");
 
   // 로그인 상태(member_id session 존재) 비로그인 상태 구분
@@ -122,7 +124,7 @@ export function Profile({ member_id, kakao_id, m_image, kakao_name }) {
               </span>
             )}
             <span style={{ marginLeft: "4px", fontSize: "14px" }}>
-              {kakao_name || member_id || ""}
+              {kakao_name || git_id || member_id || ""}
             </span>
           </span>
         }
@@ -139,7 +141,7 @@ export function Profile({ member_id, kakao_id, m_image, kakao_name }) {
           }}
         >
           <span style={{ fontWeight: "bold" }}>
-            {kakao_name || member_id || "방문객"}
+            {kakao_name || git_id || member_id || "방문객"}
           </span>
           님 환영합니다!
         </div>

@@ -40,6 +40,9 @@ export function login(memberDTO, longLogin, formData, setErrorMessage) {
       if (response.token) {
         localStorage.setItem("ACCESS_TOKEN", response.token);
         sessionStorage.setItem("MEMBER_ID", formData.member_id);
+        if (response.roles === "ROLE_admin") {
+          sessionStorage.setItem("ADMIN", "admin");
+        }
 
         // 로그인 버튼 눌렀을 떄 '아이디 자동입력 체크 상태" 확인 후 local 생성
         if (longLogin) {

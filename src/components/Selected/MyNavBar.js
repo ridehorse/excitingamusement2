@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Accordion,
   Button,
@@ -7,21 +7,20 @@ import {
   Container,
   Nav,
   Row,
-} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
-  sessionStorage.setItem('member_id','hong1');
-  const member_id = sessionStorage.getItem('member_id'); 
+  const member_id = sessionStorage.getItem("MEMBER_ID");
 
   return (
-    <Col xs={3} className='my-5'>
-      <Row className="rounded shadow mb-5" style={{ height: '100px' }}>
+    <Col xs={3} className="my-5">
+      <Row className="rounded shadow mb-5" style={{ height: "100px" }}>
         <div id="divimage">
           <i
             className="bi bi-person-circle"
             id="iimage"
-            style={{ fontSize: '2.5rem', color: 'cornflowerblue' }}
+            style={{ fontSize: "2.5rem", color: "cornflowerblue" }}
           >
             &nbsp;
           </i>
@@ -53,10 +52,7 @@ const MyNavbar = () => {
                   <i className="bi bi-chat-right-text"></i>댓글 리스트
                 </div>
               </Link>
-              <Link
-                to="/refund"
-                className="text-decoration-none text-danger"
-              >
+              <Link to="/refund" className="text-decoration-none text-danger">
                 <div className="rounded shadow mb-3 p-3">
                   <i className="bi bi-cart-dash-fill text-danger"></i>환불 신청
                 </div>
@@ -70,17 +66,14 @@ const MyNavbar = () => {
               <i className="bi bi-person-gear"></i>내 정보 수정
             </div>
           </Link>
-          <Link
-            to="/mypoint"
-            className="text-decoration-none text-dark"
-          >
+          <Link to="/mypoint" className="text-decoration-none text-dark">
             <div className="rounded shadow mb-3 p-3">
               <i className="bi bi-credit-card"></i>나의 포인트
             </div>
           </Link>
         </Nav>
       </Row>
-      <Row className="rounded shadow mb-5" style={{ height: '130px' }}>
+      <Row className="rounded shadow mb-5" style={{ height: "130px" }}>
         <Link
           to="/customer/faq?f_type="
           className="d-block text-decoration-none"

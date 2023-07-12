@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "../../css/FAQ/FAQ.css";
 
-const Tabs = ({changeF_type, f_type}) => {
-
-
+const Tabs = ({ changeF_type, f_type }) => {
   const liStyle = {
-    borderWidth: '1px 1px 0 1px',
-    borderStyle: 'solid',
-    background: '#ededed',
-    borderColor: '#999999',
-    fontWeight: 'bold',
-    borderRadius: '5px 5px 0 0'
+    borderWidth: "1px 1px 0 1px",
+    borderStyle: "solid",
+    background: "#ededed",
+    borderColor: "#999999",
+    fontWeight: "bold",
+    borderRadius: "5px 5px 0 0",
   };
 
   return (
@@ -27,7 +25,7 @@ const Tabs = ({changeF_type, f_type}) => {
               style={f_type === null ? liStyle : {}}
               onClick={() => changeF_type(null)}
             >
-              <div style={{ width: "100%", height: "100%"}}>전체</div>
+              <div style={{ width: "100%", height: "100%" }}>전체</div>
             </li>
             <li
               className={`tab-link${f_type === 1 ? " current" : ""}`}
@@ -35,7 +33,7 @@ const Tabs = ({changeF_type, f_type}) => {
               style={f_type === 1 ? liStyle : {}}
               onClick={() => changeF_type(1)}
             >
-              <div style={{ width: "100%", height: "100%"}}>이용정보</div>
+              <div style={{ width: "100%", height: "100%" }}>이용정보</div>
             </li>
             <li
               className={`tab-link${f_type === 2 ? " current" : ""}`}
@@ -43,7 +41,9 @@ const Tabs = ({changeF_type, f_type}) => {
               style={f_type === 2 ? liStyle : {}}
               onClick={() => changeF_type(2)}
             >
-              <div style={{ width: "100%", height: "100%"}}>우대정보/이벤트</div>
+              <div style={{ width: "100%", height: "100%" }}>
+                우대정보/이벤트
+              </div>
             </li>
             <li
               className={`tab-link${f_type === 3 ? " current" : ""}`}
@@ -51,7 +51,7 @@ const Tabs = ({changeF_type, f_type}) => {
               style={f_type === 3 ? liStyle : {}}
               onClick={() => changeF_type(3)}
             >
-              <div style={{ width: "100%", height: "100%"}}>예매</div>
+              <div style={{ width: "100%", height: "100%" }}>예매</div>
             </li>
             <li
               className={`tab-link${f_type === 4 ? " current" : ""}`}
@@ -59,7 +59,7 @@ const Tabs = ({changeF_type, f_type}) => {
               style={f_type === 4 ? liStyle : {}}
               onClick={() => changeF_type(4)}
             >
-              <div style={{ width: "100%", height: "100%"}}>기타</div>
+              <div style={{ width: "100%", height: "100%" }}>기타</div>
             </li>
           </ul>
         </div>

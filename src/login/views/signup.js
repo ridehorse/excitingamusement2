@@ -45,18 +45,6 @@ const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [correctMessage, setCorrectMessage] = useState("");
 
-  // const [memberIdMessage, setMemberIdMessage] = useState("");
-  // const [passMessage, setPassMessage] = useState("");
-  // const [pass2Message, setPass2Message] = useState("");
-  // const [nameMessage, setNameMessage] = useState("");
-  // const [email1Message, setEmail1Message] = useState("");
-  // const [email2Message, setEmail2Message] = useState("");
-  // const [phoneMessage, setPhoneMessage] = useState("");
-  // const [addressMessage, setAddressMessage] = useState("");
-  // const [yearMessage, setYearMessage] = useState("");
-  // const [monthMessage, setMonthMessage] = useState("");
-  // const [dayMessage, setDayMessage] = useState("");
-
   const [errorName, setErrorName] = useState("");
   const [formValue, setFormValue] = useState("");
   const [enableSubmit, setEnableSubmit] = useState("");
@@ -175,9 +163,14 @@ const SignUp = () => {
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
 
-    console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
-    console.log(formRef.current.querySelector("#m_address").value);
-    formRef.current.querySelector("#m_address").value = fullAddress;
+    console.log("zoncode : " + data.zonecode);
+    console.log("bname : " + data.bname);
+    console.log("buildingName : " + data.buildingName);
+    console.log("extraAddress : " + extraAddress);
+    console.log("fullAddress : " + fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+    console.log(formRef.current.querySelector("#m_address2").value);
+    formRef.current.querySelector("#m_address2").value = fullAddress;
+    formRef.current.querySelector("#m_address1").value = data.zonecode;
   };
 
   function handleClickJuso() {
@@ -204,9 +197,17 @@ const SignUp = () => {
     const month = formRef.current.querySelector("#month").value;
     const day = formRef.current.querySelector("#day").value;
 
-    const m_phone = formRef.current.querySelector("#m_phone").value;
+    const m_phone1 = formRef.current.querySelector("#m_phone1").value;
+    const m_phone2 = formRef.current.querySelector("#m_phone2").value;
+    const m_phone3 = formRef.current.querySelector("#m_phone3").value;
 
-    const m_address = formRef.current.querySelector("#m_address").value;
+    const m_phone = m_phone1 + m_phone2 + m_phone3;
+
+    const m_address1 = formRef.current.querySelector("#m_address1").value;
+    const m_address2 = formRef.current.querySelector("#m_address2").value;
+    const m_address3 = formRef.current.querySelector("#m_address3").value;
+
+    const m_address = m_address1 + "/" + m_address2 + " " + m_address3;
 
     const email1 = formRef.current.querySelector("#email1").value;
     const email2 = formRef.current.querySelector("#email2").value;
@@ -275,7 +276,17 @@ const SignUp = () => {
       setErrorMessage("주소를 입력해주세요.");
       return;
     }
-    if (m_phone === null || m_phone === "") {
+    if (m_phone1 === null || m_phone1 === "") {
+      setErrorName(formRef.current.querySelector("#m_phone").name);
+      setErrorMessage("전화번호를 입력해주세요.");
+      return;
+    }
+    if (m_phone2 === null || m_phone2 === "") {
+      setErrorName(formRef.current.querySelector("#m_phone").name);
+      setErrorMessage("전화번호를 입력해주세요.");
+      return;
+    }
+    if (m_phone3 === null || m_phone3 === "") {
       setErrorName(formRef.current.querySelector("#m_phone").name);
       setErrorMessage("전화번호를 입력해주세요.");
       return;
@@ -631,7 +642,7 @@ const SignUp = () => {
                       <option value="">직접입력</option>
                       <option value="naver.com">naver.com</option>
                       <option value="daum.net">daum.net</option>
-                      <option value="google.com">google.com</option>
+                      <option value="gmail.com">gmail.com</option>
                     </select>
                   </div>
                 </Col>
@@ -647,20 +658,21 @@ const SignUp = () => {
                 <div className="signup-text">주소</div>
               </Row>
               <Row className="px-2">
-                <Col sm={9} className="px-0">
+                <Col sm={3} className="px-0">
                   <div className="signup-input">
                     <input
-                      id="m_address"
+                      id="m_address1"
                       type="text"
-                      name="m_address"
+                      name="m_address1"
                       className="border-0"
                       style={{ outline: "none", width: "100%" }}
-                      placeholder="주소 입력"
+                      placeholder="우편번호"
                       onBlur={handleBlur}
                       readOnly
                     ></input>
                   </div>
                 </Col>
+
                 <Col sm={3}>
                   <div>
                     <input
@@ -671,6 +683,37 @@ const SignUp = () => {
                       style={{ width: "100%", height: "40px" }}
                       onClick={handleClickJuso}
                     />
+                  </div>
+                </Col>
+              </Row>
+              <Row className="px-2">
+                <Col sm={12} className="px-0 mt-2">
+                  <div className="signup-input">
+                    <input
+                      id="m_address2"
+                      type="text"
+                      name="m_address2"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      placeholder="주소"
+                      onBlur={handleBlur}
+                      readOnly
+                    ></input>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="px-2">
+                <Col sm={12} className="px-0 mt-2">
+                  <div className="signup-input">
+                    <input
+                      id="m_address3"
+                      type="text"
+                      name="m_address3"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      placeholder="상세주소"
+                      onBlur={handleBlur}
+                    ></input>
                   </div>
                 </Col>
               </Row>
@@ -685,17 +728,45 @@ const SignUp = () => {
                 <div className="signup-text">휴대전화</div>
               </Row>
               <Row className="px-2">
-                <div className="signup-input">
-                  <input
-                    id="m_phone"
-                    type="text"
-                    name="m_phone"
-                    className="border-0"
-                    style={{ outline: "none", width: "100%" }}
-                    placeholder="휴대전화 입력"
-                    onBlur={handleBlur}
-                  ></input>
-                </div>
+                <Col sm={2} className="px-0">
+                  <div className="signup-input" style={{ width: "100px" }}>
+                    <input
+                      id="m_phone1"
+                      type="text"
+                      name="m_phone1"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      placeholder="010"
+                      onBlur={handleBlur}
+                    ></input>
+                  </div>
+                </Col>
+                <Col sm={4} className="px-0" style={{ marginLeft: "47px" }}>
+                  <div className="signup-input">
+                    <input
+                      id="m_phone2"
+                      type="text"
+                      name="m_phone2"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      placeholder="앞 번호"
+                      onBlur={handleBlur}
+                    ></input>
+                  </div>
+                </Col>
+                <Col sm={4} className="px-0" style={{ marginLeft: "40px" }}>
+                  <div className="signup-input">
+                    <input
+                      id="m_phone3"
+                      type="text"
+                      name="m_phone3"
+                      className="border-0"
+                      style={{ outline: "none", width: "100%" }}
+                      placeholder="뒤 4자리"
+                      onBlur={handleBlur}
+                    ></input>
+                  </div>
+                </Col>
               </Row>
               {errorName === "m_phone" ? (
                 <ErrorMessage errorMessage={errorMessage} />

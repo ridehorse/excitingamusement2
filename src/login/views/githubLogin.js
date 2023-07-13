@@ -12,8 +12,8 @@ export function GithubLogin() {
   sessionStorage.setItem("MEMBER_ID", member_id);
   sessionStorage.setItem("GIT_ID", git_id);
 
-  if (result === "true") {
-    window.location.href = "/main";
+  if (result === "1") {
+    window.location.href = "/";
   } else {
     window.location.href = "/signup?git_id=" + git_id;
   }

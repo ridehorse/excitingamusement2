@@ -9,6 +9,7 @@ import {
   Row,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { SessionRemove } from "../service/sessionRemove";
 
 const MyNavbar = () => {
   const member_id = sessionStorage.getItem("MEMBER_ID"); // 세션에서 가져올 사용자 이름. 실제로는 서버에서 가져온 데이터로 구현해야 함
@@ -18,12 +19,7 @@ const MyNavbar = () => {
   function handleClickLogout() {
     const confirmLogout = window.confirm("로그아웃 하시겠습니까?");
     if (confirmLogout) {
-      sessionStorage.removeItem("MEMBER_ID");
-      sessionStorage.removeItem("KAKAO_ID");
-      sessionStorage.removeItem("KAKAO_IMAGE");
-      sessionStorage.removeItem("KAKAO_NAME");
-      localStorage.removeItem("ACCESS_TOKEN");
-      sessionStorage.removeItem("ADMIN");
+      SessionRemove();
       window.location.href = "/login";
     } else {
       return;

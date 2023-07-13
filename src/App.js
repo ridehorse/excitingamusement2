@@ -10,17 +10,16 @@ import NewPw from "./login/views/newPw";
 import PwComplete from "./login/views/pwComplete";
 import Menu from "./login/components/Menu";
 import { KakaoLogin } from "./login/service/kakaoLogin";
-import { Test } from "./login/views/test";
 import { KakaoInter } from "./login/views/kakaoInter";
 import { FullEditMember } from "./login/views/fullEditMember";
 import { FullWriteList } from "./login/views/fullWriteList";
 import { GithubLogin } from "./login/views/githubLogin";
-import Test2 from "./Test2";
 import Home from "./screens/Home";
 import { List } from "react-bootstrap-icons";
 import SelectedMyPage from "./screens/SelectedMyPage";
 import FAQ from "./screens/FAQ";
 import HomeModal from "./components/Home/HomeModal";
+import SignUpComplete from "./login/views/signUpComplete";
 
 function App() {
   const searchNameRef = useRef();
@@ -46,8 +45,7 @@ function App() {
         <Route path="/kakaoLogin" element={<KakaoLogin />} />
         <Route path="/kakaoInter" element={<KakaoInter />} />
         <Route path="/githubLogin" element={<GithubLogin />} />
-        <Route path="/test" element={<Test />} />
-        <Route path="/test2" element={<Test2 />} />
+        <Route path="/signUpComplete" element={<SignUpComplete />} />
 
         <Route path="/" element={<Home />}></Route>
         <Route path="/list" element={<List />}></Route>

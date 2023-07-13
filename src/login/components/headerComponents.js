@@ -1,6 +1,7 @@
 import { Col, Container, Nav, NavDropdown, Row } from "react-bootstrap";
 import { PersonCircle } from "react-bootstrap-icons";
 import { useEffect, useRef, useState } from "react";
+import { SessionRemove } from "../service/sessionRemove";
 
 export function HeaderLogin() {
   const member_id = sessionStorage.getItem("MEMBER_ID");
@@ -28,12 +29,8 @@ export function HeaderLogout({ setM_image, setMember_id, setKakao_id }) {
   function handleClickLogout(e) {
     const confirmLogout = window.confirm("로그아웃 하시겠습니까?");
     if (confirmLogout) {
-      sessionStorage.removeItem("MEMBER_ID");
-      sessionStorage.removeItem("KAKAO_ID");
-      sessionStorage.removeItem("KAKAO_IMAGE");
-      sessionStorage.removeItem("KAKAO_NAME");
-      sessionStorage.removeItem("ADMIN");
-      localStorage.removeItem("ACCESS_TOKEN");
+      // session local 제거
+      SessionRemove();
       setM_image("");
       setMember_id("");
       window.location.href = "/login";

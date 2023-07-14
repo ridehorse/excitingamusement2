@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../css/FAQ/CustomerMove.css"; // 경로에 맞게 변경하세요.
-// import '../../css/FAQ.css';
+// import "../../css/FAQ.css";
 
 const CustomerMove = () => {
   const [listVisible, setListVisible] = useState(false);
@@ -17,16 +17,15 @@ const CustomerMove = () => {
         }}
         style={{ cursor: "pointer" }}
       >
-        <img src="https://cdn-icons-png.flaticon.com/512/20/20176.png" />
-        |
+        <img src="https://cdn-icons-png.flaticon.com/512/20/20176.png" />|
       </span>
       <div className="text" onClick={toggleListVisibility}>
         <span>
           <b>공지사항</b>
         </span>
-        
+
         <img src="https://cdn-icons-png.flaticon.com/512/3519/3519316.png" />
-        {listVisible && 
+        {listVisible && (
           <ul className={`option-list`}>
             <li>
               <a href="/customer/announcement">공지사항</a>
@@ -41,10 +40,9 @@ const CustomerMove = () => {
               <a href="/customer/consultationDetails">상담내역</a>
             </li>
           </ul>
-        }
+        )}
       </div>
     </div>
-
   );
 };
 

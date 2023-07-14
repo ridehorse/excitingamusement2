@@ -52,10 +52,10 @@ const WriteList = (props) => {
       window.location.href = "/inquiryDetail?inquiry_num=" + list.view_id;
     }
     if (list.category === "게시판 댓글") {
-      window.location.href = "/detail?board_num=" + list.view_id;
+      window.location.href = "/detail?board_id=" + list.view_id;
     }
     if (list.category === "자유게시판") {
-      window.location.href = "/detail?board_num=" + list.view_id;
+      window.location.href = "/detail?board_id=" + list.view_id;
     }
   }
 
@@ -73,7 +73,7 @@ const WriteList = (props) => {
                   className="h2 text-center pt-2"
                   style={{ color: "white", fontWeight: "500" }}
                 >
-                  게시글/댓글 모음
+                  내 게시글/댓글
                 </div>
               </Col>
             </Row>

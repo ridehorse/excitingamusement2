@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
+// import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import {
   Col,
@@ -172,7 +172,7 @@ const List = () => {
               </div>
             </div>
           </div>
-          <InfiniteScroll
+          {/* <InfiniteScroll
             dataLength={items.length} // 현재까지 렌더링된 아이템 수
             next={async () => {
               setPageNum(pageNum + 1);
@@ -193,7 +193,7 @@ const List = () => {
                   />
                 ))}
             </Row>
-          </InfiniteScroll>
+          </InfiniteScroll> */}
         </Container>
       </div>
       <ToastNotification toast={toast} />

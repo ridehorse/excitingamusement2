@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import "./App.css";
+// import "./App.css";
 import React, { useEffect, useRef, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -15,11 +15,11 @@ import { FullEditMember } from "./login/views/fullEditMember";
 import { FullWriteList } from "./login/views/fullWriteList";
 import { GithubLogin } from "./login/views/githubLogin";
 import Home from "./screens/Home";
-import { List } from "react-bootstrap-icons";
 import SelectedMyPage from "./screens/SelectedMyPage";
 import FAQ from "./screens/FAQ";
 import HomeModal from "./components/Home/HomeModal";
 import SignUpComplete from "./login/views/signUpComplete";
+import List from "./screens/List";
 
 function App() {
   const searchNameRef = useRef();

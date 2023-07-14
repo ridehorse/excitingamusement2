@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from "react";
 import L from "leaflet";
 
 const MyMapComponent = ({ markers }) => {
@@ -10,13 +10,14 @@ const MyMapComponent = ({ markers }) => {
     if (mapRef.current) {
       const map = L.map(mapRef.current, { scrollWheelZoom: false });
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
         maxZoom: 18,
       }).addTo(map);
 
-      L.Icon.Default.imagePath = '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/';
+      L.Icon.Default.imagePath =
+        "//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/";
 
       // featureGroup (markerLayer) 생성 및 지도에 추가
       const markerLayer = new L.featureGroup().addTo(map);
@@ -36,8 +37,11 @@ const MyMapComponent = ({ markers }) => {
 
       let markerElements = [];
       for (let i = 0; i < markers.length; i++) {
-        const marker = L.marker([markers[i]['a_lat'], markers[i]['a_lng']]).addTo(markerLayer);
-        marker.bindPopup(markers[i]['a_name']);
+        const marker = L.marker([
+          markers[i]["a_lat"],
+          markers[i]["a_lng"],
+        ]).addTo(markerLayer);
+        marker.bindPopup(markers[i]["a_name"]);
         markerElements.push(marker);
       }
 
@@ -52,12 +56,12 @@ const MyMapComponent = ({ markers }) => {
   }, [markers]);
 
   return (
-    <div id="map" ref={mapRef} style={{ height: '300px', width: '100%' }} />
+    <div id="map" ref={mapRef} style={{ height: "300px", width: "100%" }} />
   );
 };
 
 MyMapComponent.defaultProps = {
-  markers: []
+  markers: [],
 };
 
 export default MyMapComponent;

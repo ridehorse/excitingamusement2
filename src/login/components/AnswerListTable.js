@@ -9,7 +9,7 @@ const AnswerListTable = (props) => {
     <Nav
       variant="tabs"
       defaultActiveKey={
-        sort === "ASC" ? "/writeList/1?sort=ASC" :  "/writeList/1?sort=DESC"
+        sort === "ASC" ? "/writeList/1?sort=ASC" : "/writeList/1?sort=DESC"
       }
     >
       <Nav.Item>

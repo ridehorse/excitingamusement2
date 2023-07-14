@@ -19,6 +19,7 @@ const paging = (prop) => {
   for (let number = startPage; number <= endPage; number++) {
     items.push(
       <Pagination.Item
+        style={{ padding: "0px" }}
         key={number}
         active={number === active}
         href={`/writeList/${number}?sort=${sort}`}
@@ -32,19 +33,27 @@ const paging = (prop) => {
       <Col className="d-flex justify-content-center">
         <div className="mx-auto">
           <Pagination>
-            <Pagination.First href={`/writeList/1?sort=${sort}`} />
+            <Pagination.First
+              style={{ padding: "0px" }}
+              href={`/writeList/1?sort=${sort}`}
+            />
             {pageNum === 1 ? null : (
               <Pagination.Prev
+                style={{ padding: "0px" }}
                 href={`/writeList/${pageNum - 1}?sort=${sort}`}
               />
             )}
             {items}
             {next ? (
               <Pagination.Next
+                style={{ padding: "0px" }}
                 href={`/writeList/${endPage + 1}?sort=${sort}`}
               />
             ) : null}
-            <Pagination.Last href={`/writeList/${lastPage}?sort=${sort}`} />
+            <Pagination.Last
+              style={{ padding: "0px" }}
+              href={`/writeList/${lastPage}?sort=${sort}`}
+            />
           </Pagination>
         </div>
       </Col>

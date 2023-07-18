@@ -113,7 +113,7 @@ public class MypageController {
 		String projectPath = System.getProperty("user.dir") +"\\src\\img\\profileImg";
 
 
-		String path = "D:\\kdigital\\reactws\\finalProject-app\\root\\exciting_amusement\\src\\login\\img\\profileImg";
+		String path = "D:\\kdigital\\reactws\\completeProject\\excitingamusement\\src\\login\\img\\profileImg";
 
 
 

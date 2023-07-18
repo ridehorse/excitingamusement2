@@ -171,6 +171,7 @@ public class LoginController {
 		if(member != null) {
 //			create : 토큰 생성
 			final String token = tokenProvider.create(member);
+			System.out.println("/kakaoSignin / token : "+token);
 			final MemberDTO responseMemberDTO = MemberDTO.builder()
 					.member_id(member.getMember_id())
 					.m_pass(member.getM_pass())
@@ -184,6 +185,8 @@ public class LoginController {
 					.m_kakao_id(member.getM_kakao_id())
 					.token(token)
 					.build();
+			
+			System.out.println("/kakaoSignin / responseMemberDTO : "+responseMemberDTO);
 			return ResponseEntity.ok().body(responseMemberDTO);
 		}else {
 			ResponseDTO responseDTO = ResponseDTO.builder()

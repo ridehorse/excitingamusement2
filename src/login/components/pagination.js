@@ -22,6 +22,7 @@ const paging = (prop) => {
         key={number}
         active={number === active}
         href={`/writeList/${number}?sort=${sort}`}
+        style={{ paddingLeft: "13px", paddingRight: "20px" }}
       >
         {number}
       </Pagination.Item>
@@ -31,7 +32,7 @@ const paging = (prop) => {
     <Row className="mt-4 mb-4">
       <Col className="d-flex justify-content-center">
         <div className="mx-auto">
-          <Pagination>
+          <Pagination style={{ marginLeft: "0px" }}>
             <Pagination.First href={`/writeList/1?sort=${sort}`} />
             {pageNum === 1 ? null : (
               <Pagination.Prev

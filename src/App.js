@@ -44,6 +44,7 @@ import { KakaoInter } from "./login/views/KaKaoInter";
 import { FullWriteList } from "./login/views/FullWriteList";
 import SearchPw from "./login/views/Searchpw";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SignUpComplete from "./login/views/signUpComplete";
 
 const App = () => {
   const searchNameRef = useRef();
@@ -54,11 +55,11 @@ const App = () => {
 
   return (
     <Router>
+      {/* <Menu/> */}
       <Menu
         searchNameRef={searchNameRef}
         onChangeSearchName={onChangeSearchName}
       />
-      {/* <Menu/> */}
       <Routes>
         {/* 일준 */}
         {/* <Route path="/board" element={<ReviewListPaging/>}/> */}
@@ -80,6 +81,7 @@ const App = () => {
         <Route path="/githubLogin" element={<GithubLogin />} />
         <Route path="/writeList/:id" element={<FullWriteList />} />
         <Route path="/searchPw" element={<SearchPw />} />
+        <Route path="/signupComplete" element={<SignUpComplete />} />
 
         {/* 효원*/}
         <Route path="/promotion" element={<Promotion />} />
@@ -126,7 +128,7 @@ const App = () => {
           <Route exact path="faq" element={<FAQ />}></Route>
         </Route>
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };

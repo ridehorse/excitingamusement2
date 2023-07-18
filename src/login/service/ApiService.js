@@ -24,12 +24,13 @@ export function call(api, method, request) {
   }
   return fetch(options.url, options)
     .then((response) => {
+      console.log(options.url + " : apiService 응답받음");
       if (response.status === 200) {
         return response.json();
       }
     })
     .catch((error) => {
-      console.log("http error");
+      console.log(options.url + " : http error");
       console.log(error);
     });
 }

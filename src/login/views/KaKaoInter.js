@@ -28,18 +28,19 @@ export function KakaoInter() {
       };
       call("/login/kakaoSignin", "POST", request)
         .then((data) => {
+          console.log("/login/kakaoSignin : data.token");
           console.log(data.token);
           localStorage.setItem("ACCESS_TOKEN", data.token);
         })
         .catch((err) => {
-          console.log(err);
+          console.log("kakaoSignin error" + err);
           alert("로그인에 실패했습니다. 다시 시도해주세요.");
           window.location.href = "/login";
         });
       window.location.href = "/";
     })
     .catch((err) => {
-      console.log(err);
+      console.log("getMemberBykakaoId error : " + err);
     });
 
   return;

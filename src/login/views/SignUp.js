@@ -310,7 +310,7 @@ const SignUp = () => {
     if (enableSubmit === "true") {
       call("/login/signup", "POST", param).then((response) => {
         console.log("응답받음");
-        window.location.href = "/login";
+        window.location.href = "/signUpComplete";
       });
     }
   }

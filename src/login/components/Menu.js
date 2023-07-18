@@ -68,6 +68,12 @@ function Menu({ onChangeSearchName, searchNameRef }) {
     } else {
     }
   }, []);
+  if (window.location.pathname === "/kakaoInter") {
+    return null;
+  }
+  if (window.location.pathname === "/kakaoLogin") {
+    return null;
+  }
 
   return (
     <header className=" header">

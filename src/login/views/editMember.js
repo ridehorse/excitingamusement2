@@ -76,7 +76,7 @@ const EditMember = () => {
         if (response === 1) {
           console.log("editmember 수정 성공");
           alert("정보수정이 성공적으로 완료되었습니다.");
-          window.location.href = "/main";
+          window.location.href = "/";
         } else {
           console.log("editmember 수정 실패");
         }

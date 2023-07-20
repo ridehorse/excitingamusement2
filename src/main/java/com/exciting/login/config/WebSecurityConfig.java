@@ -53,7 +53,8 @@ public class WebSecurityConfig {
 			.mvcMatchers("/login/**","/email","/mypage/getMemberByKakaoId").permitAll()
 			.mvcMatchers("/auth/**","/login/authGit/**","/mypage/editMember").permitAll()
 			.mvcMatchers("/amusement/**","/rideDetail/**","/list/**","/selectedapi/**").permitAll()
-			.mvcMatchers("/mypage/getMember","/mypage/upload","/mypage/getList","/mypage/writeList/*","/mypage/pastPost/*","/mypage/byebye").hasAnyRole("user","admin")
+			.mvcMatchers("/mypage/getMember","/mypage/upload","/mypage/getList","/mypage/writeList/*","/mypage/pastPost/*","/mypage/byebye")
+			.hasAnyRole("user","admin")
 			.mvcMatchers("/board/**","/customer/**","/upload/**").permitAll()
 			.mvcMatchers("/promotion/**", "/promotionprice/**", "/wishList/**", "/mypoint/**", "/writeList/**", "/order/**", "/orderlist/**", "/check/**", "/refund/**").permitAll()
 			.anyRequest() // antMatchers를 제외한 모든 API

@@ -46,7 +46,7 @@ public class TokenProvider {
 //				나중에 @AuthenticationPrincipal 을 적용해서 인증을 할때 반환되는 값이된다.
 //				.setSubject(memberEntity.getMember_id())
 				.setClaims(claims)
-				.setIssuer("demo app")
+				.setIssuer("exciting")
 				.setIssuedAt(new Date())
 				.setExpiration(expiryDate)
 				.compact();

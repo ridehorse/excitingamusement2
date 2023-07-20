@@ -271,23 +271,23 @@ const SignUp = () => {
       setErrorMessage("이메일을 입력해주세요.");
       return;
     }
-    if (m_address === null || m_address === "") {
-      setErrorName(formRef.current.querySelector("#m_address").name);
+    if (m_address2 === null || m_address2 === "") {
+      setErrorName(formRef.current.querySelector("#m_address3").name);
       setErrorMessage("주소를 입력해주세요.");
       return;
     }
     if (m_phone1 === null || m_phone1 === "") {
-      setErrorName(formRef.current.querySelector("#m_phone").name);
+      setErrorName(formRef.current.querySelector("#m_phone1").name);
       setErrorMessage("전화번호를 입력해주세요.");
       return;
     }
     if (m_phone2 === null || m_phone2 === "") {
-      setErrorName(formRef.current.querySelector("#m_phone").name);
+      setErrorName(formRef.current.querySelector("#m_phone1").name);
       setErrorMessage("전화번호를 입력해주세요.");
       return;
     }
     if (m_phone3 === null || m_phone3 === "") {
-      setErrorName(formRef.current.querySelector("#m_phone").name);
+      setErrorName(formRef.current.querySelector("#m_phone1").name);
       setErrorMessage("전화번호를 입력해주세요.");
       return;
     }
@@ -717,7 +717,7 @@ const SignUp = () => {
                   </div>
                 </Col>
               </Row>
-              {errorName === "m_address" ? (
+              {errorName === "m_address3" ? (
                 <ErrorMessage errorMessage={errorMessage} />
               ) : null}
             </div>
@@ -768,7 +768,7 @@ const SignUp = () => {
                   </div>
                 </Col>
               </Row>
-              {errorName === "m_phone" ? (
+              {errorName === "m_phone1" ? (
                 <ErrorMessage errorMessage={errorMessage} />
               ) : null}
             </div>

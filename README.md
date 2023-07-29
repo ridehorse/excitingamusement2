@@ -1,6 +1,6 @@
 # Webmarket
 > JSP로 구현한 의류쇼핑몰 입니다. <br/>
-> 제가 맡은 파트는 **결제페이지** 입니다.
+> 저의 파트는 **결제페이지** 입니다.
 
 
 ![메인페이지](https://github.com/ridehorse/excitingamusement2/blob/project_image/webMarket/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80.png)

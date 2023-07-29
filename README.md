@@ -33,6 +33,6 @@
   <br/><br/>
   사용자가 결제하기 버튼을 눌렀을때 입력하지 않은 란이 존재하면 안내합니다. 
   <br/><br/><br/>
-**3. 결제 완료 후 사용자가 웹의 뒤로가기 버튼을 눌러 다시 주문하기 페이지로 들어갈수 없도록, 사용자의 DB에서 장바구니 목록이 존재하는 경우에만 결제페이지로 이동하게 합니다**.<br/><br/>
+**3. 결제 완료 후 사용자가 웹의 뒤로가기 버튼을 눌러 다시 결제 페이지로 들어갈수 없도록, 사용자의 DB에서 장바구니 목록이 존재하는 경우에만 결제페이지로 이동하게 합니다**.<br/><br/>
 ![뒤로가기방지](https://github.com/ridehorse/excitingamusement2/blob/project_image/webMarket/%EA%B2%B0%EC%A0%9C%EC%99%84%EB%A3%8C%ED%9B%84%EB%92%A4%EB%A1%9C%EA%B0%80%EA%B8%B0%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88%EC%A0%91%EA%B7%BC.png)
 <br/><br/>

@@ -21,12 +21,12 @@
 ![적용기술](https://github.com/ridehorse/excitingamusement2/blob/project_image/excitingamusement_spring/%EC%A0%81%EC%9A%A9%EA%B8%B0%EC%88%A0.png)
 </br></br></br>
 
-# 📌 로그인 / 회원가입 / 정보수정 / 게시글과댓글 모아보기
-> 프로젝트에서 맡은 파트입니다.
+# 📌 기능설명
+> 프로젝트에서 맡은 파트의 기능설명입니다.
  
 </br></br>
 
-## 1. 아이디 자동입력 체크 / 암호화 로그인 체크 / 카카오로그인 활용
+## 1. 로그인 시 아이디 자동입력 체크 / 암호화 로그인 체크 / 카카오로그인 활용
 </br>
 
 ![기능설명1](https://github.com/ridehorse/excitingamusement2/blob/project_image/excitingamusement_spring/%EA%B8%B0%EB%8A%A5%EC%84%A4%EB%AA%851.png)
@@ -74,5 +74,7 @@
 ![기능설명9](https://github.com/ridehorse/excitingamusement2/blob/project_image/excitingamusement_spring/%EA%B8%B0%EB%8A%A5%EC%84%A4%EB%AA%859.png)
 </br></br>
 
+
+# 
 
 

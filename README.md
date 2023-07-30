@@ -20,7 +20,7 @@
 </br></br></br>
 
 # 📌 기능설명
-> [기능설명 ppt파일입니다.](https://github.com/ridehorse/excitingamusement2/blob/project_image/excitingamusement_boot/%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%981.pptx)
+> ## [기능설명 ppt파일입니다.](https://github.com/ridehorse/excitingamusement2/blob/project_image/excitingamusement_boot/%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%981.pptx)
 
 </br></br>
 

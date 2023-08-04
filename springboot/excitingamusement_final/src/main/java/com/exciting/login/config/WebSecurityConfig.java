@@ -63,7 +63,8 @@ public class WebSecurityConfig {
 //		    [[Oauth2 인증시작]]
 		    .oauth2Login()
 		    .redirectionEndpoint() // Endpoint() : 시작점
-//		    http://localhost:8080/oauth2/callback/*으로 들어오는 요청을 redirectionEndpoint에 설정된 곳으로 리디렉트하라는 뜻이다.
+//		    exciting에서 github서버에 인가요청,access_token 얻기위한 요청, 사용자의 정보를 얻기위한 요청을 보내면 응답을 보내는 주소로 http://localhost:8080/oauth2/callback/*을 사용한다.
+//		    이 주소를 redirectionEndpoint에 설정된 곳으로 리디렉트하라는 뜻이다.
 //		    endpoint에 아무것도 넣지 않으면 베이스 URL인 http://localhost:8080으로 리디렉트 된다.
 		    .baseUri("/login/authGit/*")
 		    .and()

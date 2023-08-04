@@ -83,6 +83,7 @@ public class SelectedController {
 	@PostMapping("/selectedapi/selectedcount")
 	public long selectedListCount(@RequestBody Map<String, Object> map) {
 		String member_id = (String)map.get("member_id");
+		System.out.println("/selectedapi/selectedcount // member_id : "+member_id);
 //		selected_id 맵에 추가
 		if(map.get("selected_id") != null) {
 			int selected_id = (Integer)map.get("selected_id");

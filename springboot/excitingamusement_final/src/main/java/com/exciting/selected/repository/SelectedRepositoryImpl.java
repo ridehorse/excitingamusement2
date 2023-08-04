@@ -50,7 +50,7 @@ public class SelectedRepositoryImpl implements CustomSelectedRepository{
             jpaQuery.where(selected.selected_id.lt(selectedId));
         }
 
-        	jpaQuery.groupBy(selected.amuse_id)
+        	jpaQuery.groupBy(selected.amuse_id,aimage.url)
                 .orderBy(selected.selected_id.desc())
                 .limit(limitCount);
 
@@ -63,6 +63,8 @@ public class SelectedRepositoryImpl implements CustomSelectedRepository{
         QAmusementEntity amusement = QAmusementEntity.amusementEntity;
         QAimageEntity aimage = QAimageEntity.aimageEntity;
         String member_id = (String)map.get("member_id");
+        System.out.println("SelectedRepositoryImpl.count() // map : "+map);
+        System.out.println("SelectedRepositoryImpl.count() // member_id : "+member_id);
         Integer selected_id = (Integer)map.get("selected_id");
         
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
